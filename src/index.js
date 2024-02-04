@@ -1,13 +1,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle';
 import App from './App';
+import { library } from '@fortawesome/fontawesome-svg-core'
 import reportWebVitals from './reportWebVitals';
+import { faCircleLeft, faMagnifyingGlass, faStar } from '@fortawesome/free-solid-svg-icons';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Movie from './Movie';
+
+library.add( faMagnifyingGlass, faStar, faCircleLeft )
+
+let router=createBrowserRouter([
+  {
+    path: '/',
+    element: <App/>
+  },
+  {
+    path: '/movie',
+    element: <Movie/>
+  }
+])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router}/>
   </React.StrictMode>
 );
 
